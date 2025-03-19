@@ -1,6 +1,11 @@
 package com.learning.journal.entities;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Journal {
+    @Id
     private Long id;
     private String title;
     private String content;

@@ -3,6 +3,7 @@ package com.learning.journal.controllers;
 import com.learning.journal.entities.Journal;
 import com.learning.journal.services.JournalService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,22 +15,22 @@ public class JournalController {
     private JournalService journalService;
 
     @GetMapping("/all")
-    public List<Journal> getAll(){
+    public ResponseEntity<?> getAll(){
         return journalService.getAll();
     }
 
     @PostMapping("/create")
-    public Journal createJournal(@RequestBody Journal newJournal){
+    public ResponseEntity<?> createJournal(@RequestBody Journal newJournal){
         return journalService.createJournal(newJournal);
     }
 
     @PutMapping("/id/{id}")
-    public Journal updateJournal(@PathVariable Long id, @RequestBody Journal newJournal){
+    public ResponseEntity<?> updateJournal(@PathVariable Long id, @RequestBody Journal newJournal){
         return journalService.updateJournal(id, newJournal);
     }
 
     @DeleteMapping("/id/{id}")
-    public Boolean deleteJournal(@PathVariable Long id){
+    public ResponseEntity<?> deleteJournal(@PathVariable Long id){
         return journalService.deleteJournal(id);
     }
 }
